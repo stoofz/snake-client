@@ -8,7 +8,7 @@ Before you can run this client, you will need to be running the server side whic
 
 ## Final Product
 
-["Game play and Terminal"](/screenshot.PNG)
+!["Game play and Terminal"](/screenshot.PNG)
 
 ## Getting Started
 
