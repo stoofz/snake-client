@@ -22,6 +22,7 @@ const handleUserInput = function(key) {
     process.exit();
   }
 
+  // Handles uppercase or lower case for keybindings
   switch (key.toLowerCase()) {
   case MOVE_UP_KEY:
     connection.write("Move: up");
