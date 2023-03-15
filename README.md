@@ -8,7 +8,7 @@ Before you can run this client, you will need to run the Snek server which you c
 
 ## Final Product
 
-!["Game play and Terminal"](/screenshot.PNG)
+!["Game play and Terminal"](/screencap.PNG)
 
 ## Getting Started
 
