@@ -1,6 +1,9 @@
+const { MSG, MOVE_UP_KEY, MOVE_DOWN_KEY, MOVE_LEFT_KEY, MOVE_RIGHT_KEY } = require('./constants');
+
 let connection;
 
-const setupInput = function (conn) {
+// Setup input for connection
+const setupInput = function(conn) {
   connection = conn;
   const stdin = process.stdin;
   stdin.setRawMode(true);
@@ -8,34 +11,37 @@ const setupInput = function (conn) {
   stdin.resume();
   stdin.on("data", handleUserInput);
   return stdin;
-}
+};
 
-const handleUserInput = function (key) {
-  switch (key) {
-    case '\u0003':
-      console.log("Quitting game")
-      process.exit();
-    case 'w':
-      connection.write("Move: up");
-      break;
-    case 'a':
-      connection.write("Move: left");
-       break;
-    case 's':
-      connection.write("Move: down");
-      break;
-    case 'd':
-      connection.write("Move: right");
-      break;
-    case 'm':
-      connection.write("Say: Snakes be snaking");
-      break;
-    case 'n':
-      connection.write("Say: Hissssssssssssss");
-      break;
-    case 'b':
-      connection.write("Say: Keep on slithering")
-      break;
+// Input key Handler
+const handleUserInput = function(key) {
+  
+  // Seperate if statement. If in switch statement, lint will want a break; that is unreachable.
+  if (key === '\u0003') {
+    console.log("Quitting game");
+    process.exit();
+  }
+
+  switch (key.toLowerCase()) {
+  case MOVE_UP_KEY:
+    connection.write("Move: up");
+    break;
+  case MOVE_LEFT_KEY:
+    connection.write("Move: left");
+    break;
+  case MOVE_DOWN_KEY:
+    connection.write("Move: down");
+    break;
+  case MOVE_RIGHT_KEY:
+    connection.write("Move: right");
+    break;
+  case key:
+    try {
+      connection.write(MSG[key]);
+    } catch (error) {
+      console.log("Key not mapped");
+    }
+    break;
   }
 };
 
